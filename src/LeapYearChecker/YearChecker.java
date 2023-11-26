@@ -1,6 +1,7 @@
 package LeapYearChecker;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,6 +26,7 @@ public class YearChecker extends JFrame {
     public static void main(String[] args) {
         YearChecker app = new YearChecker();
         app.setContentPane(app.JPanel);
+        app.getContentPane().setBackground(Color.lightGray);
         app.setSize(325, 150);
         app.setDefaultCloseOperation(EXIT_ON_CLOSE);
         app.setTitle("Leap Year Checker");

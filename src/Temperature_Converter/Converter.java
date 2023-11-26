@@ -1,18 +1,26 @@
 package Temperature_Converter;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Converter extends JFrame{
-    private JTextField textField1;
+    private JTextField textField;
     private JComboBox tocb;
     private JComboBox fromcb;
     private JTextField resultField;
     private JButton convertButton;
     private javax.swing.JPanel JPanel;
+    private JButton darkmode;
+    private JLabel heading;
+    private JLabel convertlbl;
+    private JLabel from;
+    private JLabel to;
+    private JLabel reslbl;
+    private boolean trigger = true;
 
     public Converter() {
         convertButton.addActionListener(e ->  {
-            float temp = Float.parseFloat(textField1.getText());
+            float temp = Float.parseFloat(textField.getText());
             float result = 0;
 
             if(fromcb.getSelectedIndex() == 0 && tocb.getSelectedIndex() == 0) {
@@ -41,6 +49,43 @@ public class Converter extends JFrame{
 
             resultField.setText(String.valueOf(result));
         });
+
+        darkmode.addActionListener(e ->  {
+            if(trigger) {
+                getContentPane().setBackground(Color.DARK_GRAY);
+                heading.setForeground(Color.white);
+                reslbl.setForeground(Color.white);
+                to.setForeground(Color.white);
+                from.setForeground(Color.white);
+                convertlbl.setForeground(Color.white);
+                textField.setBackground(Color.LIGHT_GRAY);
+                textField.setForeground(Color.black);
+                fromcb.setBackground(Color.LIGHT_GRAY);
+                fromcb.setForeground(Color.black);
+                tocb.setBackground(Color.LIGHT_GRAY);
+                tocb.setForeground(Color.black);
+                resultField.setBackground(Color.GRAY);
+                resultField.setForeground(Color.cyan);
+                trigger = false;
+            } else {
+                getContentPane().setBackground(Color.white);
+                heading.setForeground(Color.black);
+                reslbl.setForeground(Color.black);
+                to.setForeground(Color.black);
+                from.setForeground(Color.black);
+                convertlbl.setForeground(Color.black);
+                textField.setBackground(Color.white);
+                textField.setForeground(Color.black);
+                fromcb.setBackground(Color.white);
+                fromcb.setForeground(Color.black);
+                tocb.setBackground(Color.white);
+                tocb.setForeground(Color.black);
+                resultField.setBackground(Color.white);
+                resultField.setForeground(Color.black);
+                trigger = true;
+            }
+
+        });
     }
 
     public static void main(String[] args) {
@@ -48,7 +93,7 @@ public class Converter extends JFrame{
         converter.setContentPane(converter.JPanel);
         converter.setDefaultCloseOperation(EXIT_ON_CLOSE);
         converter.setTitle("Temperature Converter");
-        converter.setSize(400, 275);
+        converter.setSize(400, 375);
         converter.setVisible(true);
     }
 }
